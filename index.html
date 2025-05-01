@@ -1,160 +1,62 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>W3.CSS Template</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
-</head>
-<body class="w3-content" style="max-width:1300px">
 
-<!-- First Grid: Logo & About -->
-<div class="w3-row">
-  <div class="w3-half w3-black w3-container w3-center" style="height:700px">
-    <div class="w3-padding-64">
-      <h1>Aidan McClure</h1>
-    </div>
-    <div class="w3-padding-64">
-      <a href="#" class="w3-button w3-black w3-block w3-hover-blue-grey w3-padding-16">Home</a>
-      <a href="#work" class="w3-button w3-black w3-block w3-hover-teal w3-padding-16">projects</a>
-      <a href="#work" class="w3-button w3-black w3-block w3-hover-dark-grey w3-padding-16">Resume</a>
-      <a href="#contact" class="w3-button w3-black w3-block w3-hover-brown w3-padding-16">Contact</a>
-    </div>
-  </div>
-  <div class="w3-half w3-blue-grey w3-container" style="height:700px">
-    <div class="w3-padding-64 w3-center">
-      <h1>About Me</h1>
-      <img src="/w3images/avatar3.png" class="w3-margin w3-circle" alt="Person" style="width:50%">
-      <div class="w3-left-align w3-padding-large">
-        <p>My name is Aidan McClure, I am senior at the university of North Florida studying to get my 
-          bachelors in computer sciences and a minor in business managment.</p>
-        <p>I love to hang with friends, go to conerts and listen to music and have been learning kendama in my free time.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Second Grid: Work & Resume -->
-<div class="w3-row">
-  <div class="w3-half w3-light-grey w3-center" style="min-height:800px" id="work">
-    <div class="w3-padding-64">
-      <h2>My Work</h2>
-      <p>Some of my latest projects.</p>
-    </div>
-    <div class="w3-row">
-      <div class="w3-half">
-        <img src="/w3images/coffee.jpg" style="width:100%">
-      </div>
-      <div class="w3-half">
-        <img src="/w3images/workbench.jpg" style="width:100%">
-      </div>
-    </div>
-    <div class="w3-row w3-hide-small">
-      <div class="w3-half">
-        <img src="/w3images/workbench.jpg" style="width:100%">
-      </div>
-      <div class="w3-half">
-        <img src="/w3images/coffee.jpg" style="width:100%">
-      </div>
-    </div>
-
-    <div class="w3-row w3-hide-small">
-      <div class="w3-half">
-        <img src="/w3images/sound.jpg" style="width:100%">
-      </div>
-      <div class="w3-half">
-        <img src="/w3images/workbench.jpg" style="width:100%">
-      </div>
-    </div><br>
-    <p>Hope you enjoy :)</p>
-  </div>
-  <div class="w3-half w3-indigo w3-container" style="min-height:800px">
-    <div class="w3-padding-64 w3-center">
-      <h2>Resume</h2>
-      <p>A draft from my CV</p>
-      <div class="w3-container w3-responsive">
-        <table class="w3-table">
-          <tr>
-            <th>Year</th>
-            <th>Title</th>
-            <th>Where</th>
-          </tr>
-          <tr class="w3-white">
-            <td>Spring 2026</td>
-            <td>Gradute college!</td>
-            <td>University of North Florida</td>
-          </tr>
-          <tr>
-            <td>Present day</td>
-            <td>Looking for work!</td>
-            <td>Anywhere in the US as long as i can affford it</td>
-          </tr>
-          <tr class="w3-white">
-            <td>2022 - Present</td>
-            <td>Bachelor in Computer Sciences, Minor in bussiness managment</td>
-            <td>University of North Florida, USA</td>
-          </tr>
-          <tr>
-            <td>2022 - Present</td>
-            <td>Began working at BP where i currently work</td>
-            <td>Batteries Plus #973, USA</td>
-          </tr>
-          <tr class="w3-white">
-            <td>2009-20022</td>
-            <td>Elementary - High school</td>
-            <td>Providence School of Jacksonville</td>
-          </tr>
-          <tr class="w3-hide-medium">
-            <td>2009-2022</td>
-            <td>Elementary - High school</td>
-            <td>Providence School of Jacksonville</td>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Third Grid: Swing By & Contact -->
-<div class="w3-row" id="contact">
-  <div class="w3-half w3-dark-grey w3-container w3-center" style="height:700px">
-    <div class="w3-padding-64">
-      <h1>Reach Out</h1>
-    </div>
-    <div class="w3-padding-64">
-      <p>Looking for work, dont be shy!</p>
-      <p>Jacksonville, FL</p>
-      <p>+01 9048850796</p>
-      <p>aidangwalter@icloud.com</p>
-    </div>
-  </div>
-  <div class="w3-half w3-teal w3-container" style="height:700px">
-    <div class="w3-padding-64 w3-padding-large">
-      <h1>Contact</h1>
-      <p class="w3-opacity">GET IN TOUCH</p>
-      <form class="w3-container w3-card w3-padding-32 w3-white" action="/action_page.php" target="_blank">
-        <div class="w3-section">
-          <label>Name</label>
-          <input class="w3-input" style="width:100%;" type="text" required name="Name">
+<div id="inner-nav"></div>
+<div id="container">
+    <div id="profile">
+        <div id="image">
+            <img id="profile-photo" src="http://mnnit.ac.in/ss/images/shashank.jpg" alt="Profile-Image">
+            <a href="#"><i class="fas fa-pen stroke-transparent"></i></a>
         </div>
-        <div class="w3-section">
-          <label>Email</label>
-          <input class="w3-input" style="width:100%;" type="text" required name="Email">
+        <p id="name">Shashank Srivastava<br><span id="email">shashank12@mnnit.ac.in</span></p>
+        <p id="designation">Assistant Professor<br><span id="college">Motilal Nehru National Institute of Technology, Allahabad, Prayagraj, India</span></p>
+        <div id="social-links"><a href="#"><i class="fab fa-facebook-f stroke-transparent"></i></a><a><i class="fab fa-twitter stroke-transparent"></i></a><a><i class="fab fa-linkedin-in stroke-transparent"></i></a><a><i class="fab fa-github stroke-transparent"></i></a></div>
+        <a id="edit-intro" href="#"><i class="fas fa-pen-alt blue"></i>&nbsp;&nbsp;Edit Intro</a>
+        <hr width="100%">
+        <div id="about">
+            <p style="display:inline;">About</p>
+            <a href="#"><i class="fas fa-pen stroke-transparent-blue"></i></a>
         </div>
-        <div class="w3-section">
-          <label>Message</label>
-          <input class="w3-input" style="width:100%;" type="text" required name="Message">
-        </div>
-        <button type="submit" class="w3-button w3-teal w3-right">Send</button>
-      </form>
+        <p id="year-graduation">Expected Year of Graduation<br><strong>March, 2014</strong></p>
+        <p id="education">Education<br><strong>Doctorate, Indian Institute of Information Technology-Allahabad</strong></p>
+        <p id="more-about">More about me<br><span>DUGC of Computer Science & Engineering Department</span></p>
+        <p id="telephone">Telephone<br><strong>0532-2271351</strong></p>
+        <p id="fax">Fax<br><strong>+91-532-25453441</strong></p>
     </div>
-  </div>
+    <div id="info-cards">
+        <div class="card">
+            <p><i class="fas fa-briefcase stroke-transparent"></i>&nbsp;&nbsp;&nbsp;Work Experience</p>
+            <a href="#">+ Add work experience, including contracts and internships</a>
+        </div>
+        <div class="card">
+            <p><i class="fas fa-briefcase stroke-transparent"></i>&nbsp;&nbsp;&nbsp;Workshop</p>
+            <ul>
+                <li><p class="tags">5 th IEEE Conference on Wireless Communication and Sensor Networks<br><span>IIIT-Allahabad | <span>2010</span></span></p>
+                    <a class="edit" href="#"><i class="fas fa-pen stroke-transparent-blue"></i></a></li>
+                <li><p class="tags">Microsoft Theory Day<br><span>IISc Bangalore | <span>2012</span></span></p>
+                    <a class="edit" href="#"><i class="fas fa-pen stroke-transparent-blue"></i></a></li>
+                <li><p class="tags">Microsoft Research India 2012 Summer School on Distributed Algorithms, Systems and Programming<br><span>IISc Bangalore | <span>2012</span></span></p>
+                    <a class="edit" href="#"><i class="fas fa-pen stroke-transparent-blue"></i></a></li>
+                <li><p class="tags">IEEE workshop on Cyber security<br><span>DAIICT Gandhi Nagar | <span>Nov, 2013</span></span></p>
+                    <a class="edit" href="#"><i class="fas fa-pen stroke-transparent-blue"></i></a></li>
+                <li><p class="tags">Author workshop jointly organized by Central Library<br><span>MNNIT Allahabad & Springer (India) Pvt. Ltd New Delhi | <span>29th October, 2015</span></span></p>
+                    <a class="edit" href="#"><i class="fas fa-pen stroke-transparent-blue"></i></a></li>
+                <li><p class="tags">Workshop for Computer Science Teachers<br><span>IIT Kanpur | <span>July, 2014</span></span></p>
+                    <a class="edit" href="#"><i class="fas fa-pen stroke-transparent-blue"></i></a></li>
+                <li><p class="tags">15th International Conference on Cryptology INDOCRYPT<br><span> | <span>2014</span></span></p>
+                    <a class="edit" href="#"><i class="fas fa-pen stroke-transparent-blue"></i></a></li>
+            </ul>
+            <a href="#">+ Add workshops attended</a>
+        </div>
+        <div class="card">
+            <p><i class="fas fa-graduation-cap stroke-transparent"></i>&nbsp;&nbsp;&nbsp;Education</p>
+            <ul>
+                <li><p class="tags">Indian Institute of Information Technology-Allahabad<br><span>Secure Mobile Agent Based Communication for Real Time Applications, Doctorate | <span>March, 2014</span></span></p>
+                    <a class="edit" href="#"><i class="fas fa-pen stroke-transparent-blue"></i></a></li>
+                <li><p class="tags">Indian Institute of Information Technology-Allahabad<br><span>Information Security, MS | <span>1994-1996</span></span></p>
+                    <a class="edit" href="#"><i class="fas fa-pen stroke-transparent-blue"></i></a></li>
+                <li><p class="tags">Institute of Engineering and Rural Technology, U.P.T.U. Allahabad<br><span>Computer Science & Engineering, B.Tech | <span>1988-1992</span></span></p>
+                    <a class="edit" href="#"><i class="fas fa-pen stroke-transparent-blue"></i></a></li>
+            </ul>
+            <a href="#">+ Add new</a>
+        </div>
+    </div>
 </div>
-
-<!-- Footer -->
-<footer class="w3-container w3-black w3-padding-16">
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-</footer>
-
-</body>
-</html>
