@@ -2,17 +2,33 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Github, Linkedin, Mail, Music, MapPin, GraduationCap, Download, ChevronDown, Code2, Terminal, ExternalLink } from 'lucide-react';
 import profilePic from './assets/pfp.jfif';
-import ProjectPage from './ProjectPage'; // Make sure the filename matches exactly
+import ProjectPage from './ProjectPage';
 
-// --- 1. THE HOME COMPONENT (Your main landing page) ---
+// --- 1. THE HOME COMPONENT ---
 const Home = () => {
   const [hoveredId, setHoveredId] = useState(null);
 
   const internshipBullets = [
-    { id: 'ai', title: 'AI automation & systems integration', detail: 'Developing automated pipelines using n8n and OpenAI APIs to process user inputs and generate AI-built websites with minimal manual setup.' },
-    { id: 'data', title: 'Data management & server oversight', detail: 'Managing internal data structures and overseeing server health to ensure consistent uptime for production environments.' },
-    { id: 'web', title: 'Website creation & maintenance', detail: 'Designing and deploying responsive websites, focusing on clean architecture and long-term maintainability.' },
-    { id: 'seo', title: 'In-house site migration (SEO)', detail: 'Migrating company websites from external hosting to in-house servers by restoring backups and updating DNS records.' }
+    { 
+      id: 'ai', 
+      title: 'AI Automation & Systems Integration', 
+      detail: 'Architecting automated pipelines using n8n and OpenAI to transform raw user data into fully functional websites, drastically reducing manual development time.' 
+    },
+    { 
+      id: 'data', 
+      title: 'Data Management & Server Oversight', 
+      detail: 'Monitoring infrastructure health and optimizing internal data structures to maintain 99.9% uptime for production-level environments.' 
+    },
+    { 
+      id: 'web', 
+      title: 'Website Creation & Maintenance', 
+      detail: 'Building and scaling responsive web platforms with a focus on clean, modular architecture and long-term stability.' 
+    },
+    { 
+      id: 'seo', 
+      title: 'In-house Site Migration (SEO)', 
+      detail: 'Managing full-stack migrations by restoring legacy backups and reconfiguring DNS records to bring external sites onto internal high-performance servers.' 
+    }
   ];
 
   const languages = ["Java", "JavaScript", "C/C++", "Python", "PHP", "HTML & CSS", "Oracle SQL"];
@@ -33,12 +49,12 @@ const Home = () => {
               <div>
                 <h1 className="text-5xl md:text-6xl font-bold tracking-tighter text-white mb-2 leading-none">Aidan McClure</h1>
                 <p className="text-xl md:text-2xl text-slate-100 font-light tracking-tight italic">
-                  Software Engineer <span className="text-slate-600 px-2">/</span> CS Student @ <span className="text-white border-b-2 border-slate-800 text-lg font-normal">UNF</span>
+                  Software Engineer <span className="text-slate-600 px-2">/</span> CS Student at the <span className="text-white border-b-2 border-slate-800 text-lg font-normal">University of North Florida</span>
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-5 text-slate-400">
-              <a href="https://github.com/mcc-aid" target="_blank" rel="noreferrer" className="hover:text-sky-400 transition-all hover:-translate-y-1"><Github size={22} /></a>
+              <a href="https://github.com/Mcc-aid/Mcc-aid.github.io" target="_blank" rel="noreferrer" className="hover:text-sky-400 transition-all hover:-translate-y-1"><Github size={22} strokeWidth={1.5} /></a>
               <a href="https://linkedin.com/" target="_blank" rel="noreferrer" className="hover:text-sky-400 transition-all hover:-translate-y-1"><Linkedin size={22} /></a>
               <a href="mailto:aidangwalter@icloud.com" className="hover:text-sky-400 transition-all hover:-translate-y-1"><Mail size={22} /></a>
               <a href="#" className="hover:text-green-400 transition-all hover:-translate-y-1"><Music size={22} /></a>
@@ -92,93 +108,165 @@ const Home = () => {
           </div>
         </section>
 
-        {/* EXPERIENCE SECTION */}
-        <section className="mb-20">
-          <h2 className="text-xs uppercase tracking-[0.4em] text-sky-500 font-black mb-12">Experience</h2>
-          <div className="space-y-14 border-l-2 border-slate-900 ml-2 pl-10">
-            <div className="relative">
-              <div className="absolute -left-[49px] top-[10px] h-4 w-4 rounded-full border-2 border-sky-500 bg-slate-950 shadow-[0_0_15px_#0ea5e9]" />
-              <div className="flex flex-col md:flex-row md:justify-between mb-3">
-                <h3 className="text-2xl font-bold text-white">Software Engineering Intern</h3>
-                <span className="text-slate-400 text-sm italic">Jan 2025 — Present</span>
+        {/* --- EXPERIENCE --- */}
+  <section className="mb-20">
+    <h2 className="text-xs uppercase tracking-[0.4em] text-sky-500 font-black mb-12">Experience</h2>
+    <div className="space-y-14 border-l-2 border-slate-900 ml-2 pl-10 text-left">
+      
+      {/* INTERNSHIP SECTION */}
+      <div className="relative text-left">
+        <div className="absolute -left-[49px] top-[10px] h-4 w-4 rounded-full border-2 border-sky-500 bg-slate-950 shadow-[0_0_15px_#0ea5e9]" />
+        <div className="flex flex-col md:flex-row md:justify-between md:items-baseline mb-3">
+          <h3 className="text-2xl font-bold text-white tracking-tight text-left">Software Engineering Intern</h3>
+          <span className="text-slate-400 text-sm italic font-medium">Jan 2025 — Present</span>
+        </div>
+        <p className="text-sky-400 font-bold mb-8 uppercase tracking-[0.2em] text-xs">Custom Design Partners</p>
+        <div className="flex flex-col gap-3 w-full lg:max-w-5xl">
+          {internshipBullets.map((bullet) => (
+            <div 
+              key={bullet.id}
+              onMouseEnter={() => setHoveredId(bullet.id)}
+              onMouseLeave={() => setHoveredId(null)}
+              className="group flex flex-col border border-slate-900 bg-slate-900/10 hover:border-sky-500/40 hover:bg-slate-900/40 transition-all duration-300 rounded-md overflow-hidden cursor-pointer"
+            >
+              <div className="p-4 flex items-center justify-between">
+                <p className="text-base text-slate-100 group-hover:text-white transition-colors tracking-wide leading-none">• {bullet.title}</p>
+                <ChevronDown size={16} className={`text-slate-600 transition-transform duration-300 ${hoveredId === bullet.id ? 'rotate-180 text-sky-500' : ''}`} />
               </div>
-              <p className="text-sky-400 font-bold mb-8 uppercase tracking-[0.2em] text-xs">Custom Design Partners</p>
-              <div className="flex flex-col gap-3 w-full lg:max-w-5xl">
-                {internshipBullets.map((bullet) => (
-                  <div key={bullet.id} onMouseEnter={() => setHoveredId(bullet.id)} onMouseLeave={() => setHoveredId(null)} className="group flex flex-col border border-slate-900 bg-slate-900/10 hover:border-sky-500/40 hover:bg-slate-900/40 transition-all rounded-md overflow-hidden">
-                    <div className="p-4 flex items-center justify-between">
-                      <p className="text-base text-slate-100">• {bullet.title}</p>
-                      <ChevronDown size={16} className={`transition-transform ${hoveredId === bullet.id ? 'rotate-180 text-sky-500' : ''}`} />
-                    </div>
-                    <div className={`px-5 transition-all duration-500 ${hoveredId === bullet.id ? 'max-h-40 pb-6 opacity-100' : 'max-h-0 opacity-0'}`}>
-                      <p className="text-sm text-slate-300 leading-relaxed font-light italic uppercase tracking-wider border-t border-slate-800 pt-3">{bullet.detail}</p>
-                    </div>
-                  </div>
-                ))}
+              <div className={`px-5 transition-all duration-500 ease-in-out ${hoveredId === bullet.id ? 'max-h-40 pb-6 opacity-100' : 'max-h-0 opacity-0'}`}>
+                <div className="pt-3 border-t border-slate-800 flex gap-3">
+                    <div className="h-1.5 w-1.5 rounded-full bg-sky-500 mt-2 shrink-0"></div>
+                    <p className="text-sm text-zinc-400 leading-relaxed font-light italic uppercase tracking-wider text-left">
+                    {bullet.detail}
+                    </p>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
+      </div>
 
-        {/* PROJECTS SECTION (Updated with Links) */}
+      {/* BATTERIES PLUS SECTION */}
+      <div className="relative opacity-80">
+        <div className="absolute -left-[49px] top-[10px] h-4 w-4 rounded-full border-2 border-slate-800 bg-slate-950" />
+        <div className="flex flex-col md:flex-row md:justify-between items-baseline mb-3">
+          <h3 className="text-2xl font-bold text-white tracking-tight">Trusted Advisor</h3>
+          <span className="text-slate-500 text-sm italic font-medium">2022 — Present</span>
+        </div>
+        <p className="text-slate-500 font-bold mb-4 uppercase tracking-[0.2em] text-xs">Batteries Plus</p>
+        <p className="text-base text-slate-400 max-w-2xl font-light leading-relaxed">
+          <div className="flex items-center gap-3">
+          <div className="h-1 w-1 bg-slate-700 rounded-full" />
+          <span>Phone, tablet, and computer repair</span>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="h-1 w-1 bg-slate-700 rounded-full" />
+          <span>Keyfob cutting and programming</span>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="h-1 w-1 bg-slate-700 rounded-full" />
+          <span>Entry level mechanic</span>
+        </div>
+        </p>
+      </div>
+
+    </div>
+</section>
+
+        {/* PROJECTS SECTION */}
         <section className="mb-24">
           <h2 className="text-xs uppercase tracking-[0.4em] text-sky-500 font-black mb-12">Technical Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             
-            {/* Project 1: Portfolio */}
-            <div className="group border border-slate-900 p-8 rounded-lg bg-slate-900/20 border-sky-500/20 hover:bg-slate-900/40 transition-all">
-              <h4 className="text-xl font-bold text-white mb-4">Personal Portfolio 2.0</h4>
-              <p className="text-base text-slate-300 font-light mb-6">A high-performance personal branding platform focusing on minimalism and technical depth.</p>
-              <Link to="/project/portfolio" className="text-[10px] tracking-[0.3em] uppercase text-sky-500 hover:text-white transition-colors">
-                [ View_Technical_Report ]
+            {/* Project: Portfolio */}
+            <div className="group border border-zinc-900 p-8 rounded-lg bg-zinc-900/20 border-sky-500/20 hover:bg-zinc-900/40 transition-all">
+              <h4 className="text-xl font-bold text-white mb-4 italic tracking-tight">Portfolio 2.0</h4>
+              <p className="text-sm text-zinc-400 font-light mb-6 leading-relaxed">High-performance React application featuring automated Vercel CI/CD and modular routing.</p>
+              <Link to="/project/portfolio" className="text-[10px] tracking-[0.3em] uppercase text-sky-500 hover:text-white transition-colors font-bold">
+                [View Technical Report]
               </Link>
             </div>
 
-            {/* Project 2: SIC Assembler */}
-            <div className="group border border-slate-900 p-8 rounded-lg bg-slate-900/20 hover:bg-slate-900/40 transition-all">
-              <h4 className="text-xl font-bold text-white mb-4">SIC Assembler & Driver</h4>
-              <p className="text-base text-slate-300 font-light mb-6">A two-pass assembler for a SIC machine, generating symbol tables and object files.</p>
-              <Link to="/project/assembler" className="text-[10px] tracking-[0.3em] uppercase text-sky-500 hover:text-white transition-colors">
-                [ View_Technical_Report ]
+            {/* Project: SIC Assembler */}
+            <div className="group border border-zinc-900 p-8 rounded-lg bg-zinc-900/20 hover:bg-zinc-900/40 transition-all">
+              <h4 className="text-xl font-bold text-white mb-4 italic tracking-tight">SIC_Assembler_v1.0</h4>
+              <p className="text-sm text-zinc-400 font-light mb-6 leading-relaxed">Two-pass systems software for instruction parsing and object code generation on SIC architecture.</p>
+              <Link to="/project/assembler" className="text-[10px] tracking-[0.3em] uppercase text-sky-500 hover:text-white transition-colors font-bold">
+                [View Technical Report]
               </Link>
             </div>
 
           </div>
         </section>
       </div>
+
+      <footer className="py-12 border-t border-slate-900 md:pl-20 lg:pl-32 pr-12">
+        <p className="text-slate-200 text-base mb-2 font-medium italic">Contact: <a href="mailto:Aidangwalter@icloud.com" className="text-sky-400">Aidangwalter@icloud.com</a></p>
+        <p className="text-slate-600 text-[10px] uppercase tracking-[0.4em] font-bold">&copy; 2026 Aidan McClure. All Rights Reserved.</p>
+      </footer>
     </div>
   );
 };
 
-// --- 2. THE MAIN APP COMPONENT (The Switchboard) ---
+// --- 2. MAIN APP CONTROLLER ---
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         
+        {/* PORTFOLIO REPORT */}
         <Route path="/project/portfolio" element={
           <ProjectPage 
             title="Portfolio 2.0"
-            description="A high-performance personal branding platform built to demonstrate modern frontend architecture and automated deployment pipelines."
-            tech={["React 18", "Vite", "Tailwind CSS", "Vercel"]}
+            description="Goal: This project was a true test of everything I have learned so far in my journey as a developer. Beyond just being a fun build, I hope this platform showcases my attention to detail and helps me stand out from the rest as I transition into the professional engineering space."
+            tech={["React 18", "Vite", "Tailwind CSS", "Vercel CI/CD"]}
             githubLink="https://github.com/Mcc-aid/Mcc-aid.github.io"
-            challenges={[
-              { title: "State-Driven UI", content: "Moving away from static HTML to allow for dynamic components like the experience accordion and project routing." },
-              { title: "Performance Optimization", content: "Using Vite's build tool to minimize bundle sizes and ensure sub-second load times." }
+        
+            architecture={[
+              { 
+                phase: "Vite Build Engine", 
+                step: "Utilized Vite's Hot Module Replacement (HMR) and Rollup-based bundling to optimize asset loading and ensure a sub-second Time to Interactive (TTI)." 
+              },
+              { 
+                phase: "Automated CI/CD", 
+                step: "Configured a deployment pipeline where GitHub webhooks trigger Vercel build-bots on every push, ensuring the live site at mccaid.com is always in sync with the master branch." 
+              }
+            ]}
+            logic={[
+              { 
+                header: "Component-Based Architecture", 
+                body: "Refactored the entire UI into modular React components, allowing for independent scaling of the 'Technical Manifest' system without affecting the core landing page." 
+              },
+              { 
+                header: "DNS & Production Routing", 
+                body: "Managed the domain migration to Vercel's edge network, configuring custom CNAME records and SSL termination to ensure secure, low-latency access globally." 
+              }
             ]}
           />
         } />
 
+        {/* SIC ASSEMBLER REPORT */}
         <Route path="/project/assembler" element={
           <ProjectPage 
             title="SIC Assembler"
-            description="A two-pass assembler designed for the Simplified Instructional Computer (SIC) architecture, handling instruction parsing and object code generation."
-            tech={["Python", "Computer Architecture", "Algorithms"]}
-            githubLink="#" 
-            challenges={[
-              { title: "Symbol Table Management", content: "Implementing efficient hash-mapping for labels and addresses during the first pass." },
-              { title: "Instruction Translation", content: "Developing a robust parser to convert mnemonic opcodes and operands into hexadecimal object code." }
+            description="A low-level systems programming project designed to translate mnemonic instructions into machine-executable hex code for the SIC architecture."
+            tech={["C Language", "Systems Programming", "Hex Conversion", "Algorithms"]}
+            githubLink="https://github.com/mcc-aid"
+            architecture={[
+              { phase: "Pass 1: SYMTAB", step: "The scanner identifies labels and assigns memory addresses to build the Symbol Table." },
+              { phase: "Pass 2: Code Gen", step: "Translates opcodes and addresses into machine code to generate HTE records." }
+            ]}
+            logic={[
+              { 
+                header: "Memory Allocation", 
+                body: "Managed static and relative addressing to ensure object code aligns with SIC memory constraints." 
+              },
+              { 
+                header: "Instruction Parsing", 
+                body: "Built a robust C-based parser to handle opcode lookup tables and operand extraction.", 
+                snippet: "void passOne(char label[], char opcode[]) {\n  if(searchSYMTAB(label)) { error('Duplicate Label'); }\n  else { insertSYMTAB(label, LOCCTR); }\n}" 
+              }
             ]}
           />
         } />
