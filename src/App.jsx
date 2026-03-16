@@ -10,9 +10,9 @@ const Home = () => {
 
   const internshipBullets = [
     { id: 'ai', title: 'AI Automation & Systems Integration', detail: 'SmartSites: Architecting automated pipelines using n8n and OpenAI to transform raw user data into fully functional websites.' },
-    { id: 'data', title: 'Data Management & Server Oversight', detail: 'Monitoring infrastructure health and optimizing internal data structures to maintain 99.9% uptime.' },
-    { id: 'web', title: 'Website Creation & Maintenance', detail: 'Building and scaling responsive web platforms with a focus on clean, modular architecture.' },
-    { id: 'seo', title: 'In-house Site Migration (SEO)', detail: 'Managing full-stack migrations by restoring legacy backups and reconfiguring DNS records.' }
+    { id: 'data', title: 'Data Management & Server Oversight', detail: 'Monitoring infrastructure health and optimizing internal data structures using CPanel and WHM to maintain 99.9% uptime.' },
+    { id: 'web', title: 'Website Creation & Maintenance', detail: 'Building and scaling responsive web platforms using WordPress and Google Ai Studio with a focus on clean, modular architecture.' },
+    { id: 'seo', title: 'In-house Site Migration', detail: 'Managing full-stack migrations by restoring legacy backups and reconfiguring DNS records.' }
   ];
 
   const languages = ["Java", "JavaScript", "C/C++", "Python", "PHP", "HTML & CSS", "Oracle SQL"];
@@ -33,7 +33,9 @@ const Home = () => {
               <div>
                 <h1 className="text-5xl md:text-6xl font-bold tracking-tighter text-white mb-2 leading-none">Aidan McClure</h1>
                 <p className="text-xl md:text-2xl text-slate-100 font-light tracking-tight italic">
-                  Software Engineer <span className="text-slate-600 px-2">/</span> CS Student at <span className="text-white border-b-2 border-slate-800 text-lg font-normal">UNF</span>
+                  Software Engineer <span className="text-slate-600 px-2">/</span> CS Student at the <span className="text-white border-b-2 border-slate-800 text-lg font-normal">University of
+                    North Floirda
+                  </span>
                 </p>
               </div>
             </div>
@@ -50,13 +52,43 @@ const Home = () => {
           </div>
         </header>
 
-        {/* BACKGROUND */}
+        {/* BACKGROUND SECTION */}
         <section className="mb-20 border-t border-slate-900 pt-12">
           <h2 className="text-xs uppercase tracking-[0.4em] text-sky-500 font-black mb-6">Background</h2>
-          <p className="text-slate-100 text-lg md:text-xl font-light leading-relaxed max-w-5xl">
+          <p className="text-slate-100 text-lg md:text-xl font-light leading-relaxed max-w-5xl mb-12">
             Currently finishing my Bachelors in Computer Science at the University of North Florida. 
-            When I'm not building AI pipelines, I'm usually learning new kendama tricks, heading to concerts, or just hanging with friends outdoors.
+            When I'm not building AI pipelines or troubleshooting servers, I'm usually learning new kendama tricks, heading to concerts, or just hanging with friends outdoors.
           </p>
+
+          {/* SKILLS SUB-SECTION (The Missing Piece) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl">
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <Code2 size={18} className="text-slate-500" />
+                <h3 className="text-sm font-bold text-white uppercase tracking-widest">Languages</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {languages.map((skill) => (
+                  <span key={skill} className="px-3 py-1.5 bg-slate-900/50 border border-slate-800 text-slate-300 text-[11px] font-bold uppercase tracking-wider rounded-sm hover:border-sky-500/40 transition-colors">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <Terminal size={18} className="text-slate-500" />
+                <h3 className="text-sm font-bold text-white uppercase tracking-widest">Tools & Platforms</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {tools.map((tool) => (
+                  <span key={tool} className="px-3 py-1.5 bg-slate-900/50 border border-slate-800 text-slate-300 text-[11px] font-bold uppercase tracking-wider rounded-sm hover:border-sky-500/40 transition-colors">
+                    {tool}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* EXPERIENCE */}
@@ -108,25 +140,36 @@ const Home = () => {
             <div className="group border border-zinc-900 p-8 rounded-lg bg-zinc-900/20 border-sky-500/20 hover:bg-zinc-900/40 transition-all">
               <h4 className="text-xl font-bold text-white mb-4 italic tracking-tight">Portfolio 2.0 (This current site)</h4>
               <p className="text-sm text-zinc-400 font-light mb-6">High-performance React application with automated Vercel CI/CD pipelines.</p>
-              <Link to="/project/portfolio" className="text-[10px] tracking-[0.3em] uppercase text-sky-500 font-bold hover:text-white">[ View Technical Manifest ]</Link>
+              <Link to="/project/portfolio" className="text-[10px] tracking-[0.3em] uppercase text-sky-500 font-bold hover:text-white">[View Technical Report]</Link>
             </div>
             <div className="group border border-zinc-900 p-8 rounded-lg bg-zinc-900/20 hover:bg-zinc-900/40 transition-all">
               <h4 className="text-xl font-bold text-white mb-4 italic tracking-tight">SIC Assembler</h4>
               <p className="text-sm text-zinc-400 font-light mb-6">Two-pass systems software for instruction parsing and object code generation.</p>
-              <Link to="/project/assembler" className="text-[10px] tracking-[0.3em] uppercase text-sky-500 font-bold hover:text-white">[ View Technical Manifest ]</Link>
+              <Link to="/project/assembler" className="text-[10px] tracking-[0.3em] uppercase text-sky-500 font-bold hover:text-white">[View Technical Report]</Link>
             </div>
             <div className="group border border-zinc-900 p-8 rounded-lg bg-zinc-900/20 hover:bg-zinc-900/40 transition-all">
               <h4 className="text-xl font-bold text-white mb-4 italic tracking-tight">Weather Forecast GUI</h4>
               <p className="text-sm text-zinc-400 font-light mb-6">External API integration for real-time meteorological data visualization.</p>
-              <Link to="/project/weather" className="text-[10px] tracking-[0.3em] uppercase text-sky-500 font-bold hover:text-white">[ View Technical Manifest ]</Link>
+              <Link to="/project/weather" className="text-[10px] tracking-[0.3em] uppercase text-sky-500 font-bold hover:text-white">[View Technical Report]</Link>
             </div>
             <div className="group border border-zinc-900 p-8 rounded-lg bg-zinc-900/20 hover:bg-zinc-900/40 transition-all">
               <h4 className="text-xl font-bold text-white mb-4 italic tracking-tight">Nutrition GUI V1</h4>
               <p className="text-sm text-zinc-400 font-light mb-6">A nutrional form with a GUI that tracks the users nutrional stats and stores them into a .csv</p>
-              <Link to="/project/nutrition" className="text-[10px] tracking-[0.3em] uppercase text-sky-500 font-bold hover:text-white">[ View Technical Manifest ]</Link>
+              <Link to="/project/nutrition" className="text-[10px] tracking-[0.3em] uppercase text-sky-500 font-bold hover:text-white">[View technical Report]</Link>
             </div>
           </div>
         </section>
+
+        {/* FOOTER SECTION */}
+      <footer className="py-12 border-t border-slate-900 md:pl-20 lg:pl-32 pr-12 text-left">
+        <p className="text-slate-200 text-base mb-2 font-medium italic">
+          Contact: <a href="mailto:aidangwalter@icloud.com" className="text-sky-400 hover:text-white transition-colors">aidangwalter@icloud.com</a>
+        </p>
+        <p className="text-slate-600 text-[10px] uppercase tracking-[0.4em] font-bold">
+          &copy; 2026 Aidan McClure. All Rights Reserved.
+        </p>
+      </footer>
+
       </div>
     </div>
   );

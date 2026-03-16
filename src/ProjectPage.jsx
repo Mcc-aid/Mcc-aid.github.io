@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Github, ExternalLink, Activity, Terminal, Layers } from 'lucide-react';
+import { ArrowLeft, Github, ExternalLink, Activity, Terminal, Layers, PlayCircle } from 'lucide-react';
 
-const ProjectPage = ({ title, description, tech, architecture, logic, githubLink, liveLink }) => {
+const ProjectPage = ({ title, description, tech, architecture, logic, githubLink, liveLink, media }) => {
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-300 selection:bg-sky-500/30 font-sans antialiased">
+      {/* Navigation */}
       <nav className="p-8 max-w-6xl mx-auto flex justify-between items-center border-b border-zinc-900/50">
         <Link to="/" className="flex items-center gap-2 hover:text-white transition-colors group">
           <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
@@ -16,6 +17,7 @@ const ProjectPage = ({ title, description, tech, architecture, logic, githubLink
       </nav>
 
       <main className="max-w-6xl mx-auto px-8 py-16">
+        {/* Title Block */}
         <div className="mb-20 text-left">
           <h1 className="text-5xl md:text-7xl font-light tracking-tighter text-white mb-8 italic">{title}</h1>
           <div className="flex flex-wrap gap-2 text-left">
@@ -26,6 +28,7 @@ const ProjectPage = ({ title, description, tech, architecture, logic, githubLink
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+          {/* Left: Summary & Links */}
           <div className="lg:col-span-4 space-y-12 text-left">
             <section>
               <h3 className="flex items-center gap-2 text-[10px] tracking-[0.3em] uppercase text-zinc-500 mb-6"><Activity size={14} /> Goal:</h3>
@@ -48,7 +51,36 @@ const ProjectPage = ({ title, description, tech, architecture, logic, githubLink
             </div>
           </div>
 
+          {/* Right: Technical Breakdown */}
           <div className="lg:col-span-8 space-y-20 text-left">
+            
+            {/* --- NEW MEDIA GALLERY SECTION --- */}
+            {media && media.length > 0 && (
+              <section>
+                <h3 className="flex items-center gap-2 text-[10px] tracking-[0.3em] uppercase text-sky-500 mb-8 font-black">
+                   <PlayCircle size={14} /> Visual_Artifacts
+                </h3>
+                <div className="grid grid-cols-1 gap-6">
+                  {media.map((item, idx) => (
+                    <div key={idx} className="border border-zinc-900 bg-zinc-900/20 rounded-lg overflow-hidden group">
+                      {item.type === 'video' ? (
+                        <video controls className="w-full h-auto">
+                          <source src={item.url} type="video/mp4" />
+                        </video>
+                      ) : (
+                        <img src={item.url} alt="Project Preview" className="w-full h-auto object-cover" />
+                      )}
+                      {item.caption && (
+                        <div className="p-4 bg-black/50 border-t border-zinc-900 text-[10px] tracking-[0.2em] text-zinc-500 uppercase italic font-mono">
+                          // {item.caption}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
             <section>
               <h3 className="flex items-center gap-2 text-[10px] tracking-[0.3em] uppercase text-sky-500 mb-8 font-black"><Layers size={14} /> System_Architecture</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -60,6 +92,7 @@ const ProjectPage = ({ title, description, tech, architecture, logic, githubLink
                 ))}
               </div>
             </section>
+
             <section>
               <h3 className="flex items-center gap-2 text-[10px] tracking-[0.3em] uppercase text-sky-500 mb-8 font-black"><Terminal size={14} /> Logic_Implementation</h3>
               <div className="space-y-12">
@@ -68,6 +101,11 @@ const ProjectPage = ({ title, description, tech, architecture, logic, githubLink
                     <div className="absolute -left-[5px] top-0 h-2 w-2 bg-sky-500 rounded-full" />
                     <h4 className="text-white text-lg mb-3 font-light tracking-tight">{block.header}</h4>
                     <p className="text-sm text-zinc-500 leading-relaxed font-light italic">{block.body}</p>
+                    {block.snippet && (
+                      <pre className="mt-4 bg-black p-4 border border-zinc-900 overflow-x-auto rounded text-[11px] font-mono text-sky-400">
+                        {block.snippet}
+                      </pre>
+                    )}
                   </div>
                 ))}
               </div>
