@@ -212,12 +212,48 @@ function App() {
 
         <Route path="/project/weather" element={
           <ProjectPage 
-            title="AWeather GUI"
+            title="Weather Forecast GUI"
             description="Software Engineering project focused on clean API consumption and presenting meteorological data sets."
             tech={["Java", "JavaFX", "OpenWeather API"]}
             githubLink="https://github.com/Mcc-aid/WeatherApp"
-            architecture={[{ phase: "API Integration", step: "Implemented asynchronous HTTP requests to fetch live weather data." }]}
-            logic={[{ header: "JSON Mapping", body: "Custom serialization layer to translate raw responses into dynamic UI updates." }]}
+            
+            media={[
+              {
+                type: 'video', 
+                url: '/project_demos/weather-demo.mp4', // Points to public/project_demos/...
+                caption: 'Live demo: Fetching meteorological data via RESTful API'
+              },
+            ]}
+            
+            architecture={[
+              { 
+                phase: "MVC Design Pattern", 
+                step: "Decoupled the UI (JavaFX) from the backend logic to ensure that changes to the OpenWeather API schema don't break the frontend rendering." 
+              },
+              { 
+                phase: "Multi-Threaded Execution", 
+                step: "Implemented Task concurrency to offload network latency from the Application Thread, preventing 'UI Freezing' during large JSON payload retrievals." 
+              },
+              { 
+                phase: "Exception Handling Layer", 
+                step: "Built a robust error-catching system for 404 (City Not Found) and 401 (Invalid API Key) responses to provide graceful user feedback instead of system crashes." 
+              }
+            ]}
+
+            logic={[
+              { 
+                header: "01. Authentication & Handshake", 
+                body: "The system initiates a secure handshake with the OpenWeather API using an encrypted key. Upon verification, the app establishes a listener for user-defined location parameters." 
+              },
+              { 
+                header: "02. Search & Fetch Protocol", 
+                body: "When a city is entered, the logic triggers an asynchronous GET request. By using non-blocking I/O, the GUI remains fully interactive while the data stream is being parsed in the background." 
+              },
+              { 
+                header: "03. Data Visualization", 
+                body: "Raw JSON is converted into local objects. The system then dynamically selects high-definition SVG assets (weather icons) based on the 'weather_id' returned, ensuring the UI accurately reflects live conditions." 
+              }
+            ]}
           />
         } />
 
