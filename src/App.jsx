@@ -182,20 +182,59 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         
+        //--------------------------------------------Portfolio 2.0-------------------------------------------------------------        
         <Route path="/project/portfolio" element={
           <ProjectPage 
-            title="Portfolio 2.0"
-            description="Goal: This project was a true test of everything I have learned so far in my journey as a developer. Beyond just being a fun build, I hope this platform showcases my attention to detail."
-            tech={["React 18", "Vite", "Tailwind CSS", "Vercel CI/CD"]}
-            githubLink="https://github.com/Mcc-aid/Mcc-aid.github.io"
+            title="Portfolio v2.0"
+            description="A high-performance personal engineering portfolio built with a focus on modular component architecture, responsive design, and technical storytelling."
+            tech={["React 18", "Tailwind CSS", "Framer Motion", "Lucide React"]}
+            githubLink="https://github.com/Mcc-aid/portfolio-v2"
+            
             architecture={[
-              { phase: "Vite Build Engine", step: "Utilized Vite's Hot Module Replacement (HMR) for optimized asset loading." },
-              { phase: "Automated CI/CD", step: "Configured deployment pipelines via GitHub webhooks to Vercel edge network." }
+              { 
+                phase: "Atomic Component Structure", 
+                step: `Architected the site using a modular 'ProjectPage' template component. This allows for rapid scaling—new projects can be deployed by passing unique data objects into a single, standardized logic-shell.` 
+              },
+              { 
+                phase: "Responsive Grid Layout", 
+                step: `Implemented a mobile-first responsive grid using Tailwind CSS. Utilized sticky sidebars and flexible text-stacking logic to ensure high readability across ultra-wide monitors and mobile devices.` 
+              },
+              { 
+                phase: "Dynamic State Routing", 
+                step: `Utilized React Router for seamless client-side navigation. Integrated custom state hooks to manage the 'Demo Mode' toggle, triggering smooth scrolling and visibility transitions.` 
+              }
             ]}
-            logic={[{ header: "Component Architecture", body: "Refactored UI into modular React components for independent scaling." }]}
+
+            logic={[
+              { 
+                header: "01. Conditional Rendering Engine", 
+                body: `Developed a robust conditional logic system for the 'Visual Artifacts' section. The system detects media types (video vs. image) and handles null-states, ensuring the gallery only renders when assets are present and the user requests a demo.`,
+                snippet: `{showDemo && media && (
+          <section id="gallery" className="animate-in fade-in slide-in-from-bottom-8">
+            {media.map((item) => item.type === 'video' ? <video /> : <img />)}
+          </section>
+        )}`
+              },
+              { 
+                header: "02. Layout Stacking Logic", 
+                body: `Optimized the 'Technical Manifest' view by stacking architecture and logic sections vertically on wide screens. This utilizes white space effectively and creates a 'documentation' feel that caters to technical recruiters.`,
+                snippet: `<div className="flex flex-col lg:flex-row gap-16">
+          <aside className="lg:w-1/3 lg:sticky"> // Sticky Sidebar
+          <div className="lg:w-2/3 space-y-24"> // Stacked Content
+        </div>`
+              },
+              { 
+                header: "03. Interactive Motion Design", 
+                body: `Integrated subtle CSS transitions and Lucide-icon hover states to provide tactile feedback. This enhances the 'Tactical UI' aesthetic while maintaining high performance and accessibility (a11y) standards.`,
+                snippet: `<button className="hover:bordersky-500/50 hover:bg-sky-500/10 transit-all active:scale-95">
+          <Eye size={18} className="group-hover:text-sky-400" />
+        </button>`
+              }
+            ]}
           />
         } />
 
+        //--------------------------------------------SIC Assembler Project-------------------------------------------------------------
         <Route path="/project/assembler" element={
           <ProjectPage 
             title="SIC Assembler"
@@ -203,13 +242,48 @@ function App() {
             tech={["C Language", "Systems Programming", "Hex Conversion"]}
             githubLink="https://github.com/Mcc-aid/SIC-driver"
             architecture={[
-              { phase: "Pass 1: SYMTAB", step: "Scans source code to assign memory addresses and build Symbol Table." },
-              { phase: "Pass 2: Code Gen", step: "Translates opcodes to generate HTE records." }
+            { 
+              phase: "Two-Pass Compilation Strategy", 
+              step: "Engineered a robust dual-pass scanning architecture."
+              + "Pass 1 focuses on symbol definition and Location Counter (LOCCTR) management to establish the Symbol Table (SYMTAB)." 
+              + "Pass 2 performs the actual translation of mnemonics into object code by cross-referencing the Opcode Table (OPTAB)."
+            },
+            { 
+              phase: "Hexadecimal Address Mapping", 
+              step: "Developed a custom addressing engine to handle SIC’s 24-bit instruction format."
+              + "The system ensures that all labels, constants (BYTE/WORD),"
+              + "and reserved blocks (RESB/RESW) are correctly mapped to contiguous hexadecimal memory addresses."
+            },
+            { 
+              phase: "Data Structure Optimization", 
+              step: "Utilized efficient data structures in C to handle symbol lookups."
+              + "By structuring the SYMTAB and OPTAB effectively, the assembler achieves near-instantaneous translation speeds,"
+              + "minimizing the overhead of repeated string comparisons during the parsing phases."
+            }
+          ]}
+
+            logic={[
+              { 
+                header: "01. Mnemonic-to-Opcode Translation", 
+                body: "The core logic utilizes a string-parsing engine to extract mnemonics and operands from the source file."
+                + "it translates human-readable instructions (like LDA, STA, JSUB) into their corresponding machine-level hexadecimal opcodes using a constant-time lookup strategy." 
+              },
+              { 
+                header: "02. HTE Record Generation", 
+                body: "Engineered the logic to output standardized HTE (Header, Text, End) records."
+                + "This includes calculating record lengths and verifying that the starting address and program length are correctly formatted for the SIC loader to execute."
+              },
+              { 
+                header: "03. Literal and Directive Handling", 
+                body: "Implemented logic for assembler directives (START, END, BYTE, WORD)."
+                + "The system differentiates between executable instructions and data storage requests,"
+                + "ensuring that the memory counter increments correctly based on the specific data type or reservation size requested."
+              }
             ]}
-            logic={[{ header: "Parsing Engine", body: "Built robust C-based parser for opcode lookup and operand extraction." }]}
           />
         } />
 
+        //--------------------------------------------Weather Gui Project-------------------------------------------------------------
         <Route path="/project/weather" element={
           <ProjectPage 
             title="Weather Forecast GUI"
@@ -226,19 +300,19 @@ function App() {
             ]}
             
             architecture={[
-              { 
-                phase: "MVC Design Pattern", 
-                step: "Decoupled the UI (JavaFX) from the backend logic to ensure that changes to the OpenWeather API schema don't break the frontend rendering." 
-              },
-              { 
-                phase: "Multi-Threaded Execution", 
-                step: "Implemented Task concurrency to offload network latency from the Application Thread, preventing 'UI Freezing' during large JSON payload retrievals." 
-              },
-              { 
-                phase: "Exception Handling Layer", 
-                step: "Built a robust error-catching system for 404 (City Not Found) and 401 (Invalid API Key) responses to provide graceful user feedback instead of system crashes." 
-              }
-            ]}
+            { 
+              phase: "MVC Design Pattern", 
+              step: "Decoupled the UI (JavaFX) from the backend logic to ensure that changes to the OpenWeather API schema don't break the frontend rendering." 
+            },
+            { 
+              phase: "Multi-Threaded Execution", 
+              step: "Implemented Task concurrency to offload network latency from the Application Thread, preventing 'UI Freezing' during large JSON payload retrievals." 
+            },
+            { 
+              phase: "Exception Handling Layer", 
+              step: "Built a robust error-catching system for 404 (City Not Found) and 401 (Invalid API Key) responses to provide graceful user feedback instead of system crashes." 
+            }
+          ]}
 
             logic={[
               { 
@@ -257,14 +331,60 @@ function App() {
           />
         } />
 
+        //--------------------------------------------Nutrition Project-------------------------------------------------------------
         <Route path="/project/nutrition" element={
           <ProjectPage 
             title="Nutrition GUI"
             description="My first venture into graphical user interfaces, focusing on event-driven programming."
             tech={["Java", "Swing/AWT", "File I/O"]}
             githubLink="https://github.com/Mcc-aid/Nutrition-gui"
-            architecture={[{ phase: "Event Handling", step: "Utilized ActionListeners to handle multi-field user input." }]}
-            logic={[{ header: "Data Persistence", body: "Implemented local file I/O to save and retrieve user logs between sessions." }]}
+
+            media={[
+              {
+                type: 'video', 
+                url: '/project_demos/nutrition-demo.mp4', 
+                caption: 'Live demo: Using a JavaSwing GUI to process data and store it in a .csv file'
+              },
+            ]}
+            
+            architecture={[
+            { 
+              phase: "Component Diversity & Swing Framework", 
+              step: "Developed a multi-modal data entry interface utilizing a variety of Java Swing components"
+              + "(JSlider, JSpinner, JComboBox, JRadioButton). This demonstrates a deep understanding of the Swing class"
+              + "hierarchy and how to synchronize disparate component states within a single JFrame."
+            },
+            { 
+              phase: "Layout Management", 
+              step: "Implemented a structured layout strategy to ensure aesthetic consistency and user accessibility."
+              + "By managing the vertical flow of the survey, the system guides the user through distinct logical blocks"
+              + "(Personal Info vs. Dietary Metrics), minimizing cognitive load."
+            },
+            { 
+              phase: "State Aggregation", 
+              step: "Engineered a submission layer that polls the state of every individual UI component upon the Submit event."
+              + "This involves mapping slider integers, checkbox booleans, and string inputs into a single unified data object for processing." 
+            }
+          ]}
+
+            logic={[
+              { 
+                header: "01. Dynamic Range Handling", 
+                body: "The system utilizes a JSlider with custom tick marks and a JSpinner for numerical input. The logic restricts user input to logical bounds"
+                + "(e.g., 0-10 meals per day), eliminating the need for complex post-entry string validation and preventing junk data from entering the system."
+              },
+              { 
+                header: "02. Event-Driven \"Clear\" Protocol", 
+                body: "When a city is entered, the logic triggers an asynchronous GET request. By using non-blocking I/O, the GUI remains fully interactive while the data stream is being parsed in the background." 
+              },
+              { 
+                header: "03. Multi-Selection Logic (Checkboxes)", 
+                body: "Developed an array-based selection logic for dietary constraints (Dairy, Wheat, Sugar)."
+                + "The system evaluates the isSelected() state of each checkbox independently, allowing for a flexible,"
+                + "multi-choice data profile that standard radio buttons cannot provide." 
+              }
+            ]}
+
           />
         } />
       </Routes>
