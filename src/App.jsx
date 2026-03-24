@@ -185,6 +185,7 @@ function App() {
 
       //for vercel analytics
       <Analytics />
+      
       <Routes>
         <Route path="/" element={<Home />} />
         
