@@ -4,6 +4,9 @@ import { Github, Linkedin, Mail, Music, MapPin, GraduationCap, Download, Chevron
 import profilePic from './assets/pfp.jfif';
 import ProjectPage from './ProjectPage';
 
+//used to track site traffic
+import { Analytics } from "@vercel/analytics/react"
+
 // --- 1. THE HOME COMPONENT (Landing Page) ---
 const Home = () => {
   const [hoveredId, setHoveredId] = useState(null);
@@ -179,6 +182,9 @@ const Home = () => {
 function App() {
   return (
     <Router>
+
+      //for vercel analytics
+      <Analytics />
       <Routes>
         <Route path="/" element={<Home />} />
         
