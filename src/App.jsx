@@ -183,7 +183,6 @@ function App() {
   return (
     <Router>
 
-      //for vercel analytics
       <Analytics />
       
       <Routes>
