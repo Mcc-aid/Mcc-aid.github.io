@@ -168,7 +168,7 @@ const Home = () => {
               <div className="job past">
                 <span className="jnode" />
                 <div className="jrow">
-                  <span className="jtitle">Trusted Advisor / Technician</span>
+                  <span className="jtitle">Trusted Advisor</span>
                   <span className="jdate">2022 — PRESENT</span>
                 </div>
                 <div className="jco">Batteries Plus</div>
