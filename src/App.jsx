@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Github, Linkedin, Mail, Music, Download, ChevronDown, Code2, Terminal, ArrowUpRight } from 'lucide-react';
 import profilePic from './assets/pfp.jfif';
@@ -18,6 +18,41 @@ const Ambient = () => (
 // --- 1. THE HOME COMPONENT (Landing Page) ---
 const Home = () => {
   const [openId, setOpenId] = useState('ai');
+  const [activeId, setActiveId] = useState('background');
+  const [rail, setRail] = useState({ top: 0, height: 0 });
+  const [dotTop, setDotTop] = useState(0);
+
+  // Watch which section is centered in the viewport
+  useEffect(() => {
+    const ids = ['background', 'experience', 'projects'];
+    const els = ids.map((id) => document.getElementById(id)).filter(Boolean);
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) setActiveId(e.target.id); });
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+    );
+    els.forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+
+  // Size the rail and slide the single dot to the active section
+  useEffect(() => {
+    const place = () => {
+      const first = document.getElementById('background');
+      const last = document.getElementById('projects');
+      const current = document.getElementById(activeId);
+      if (first && last) setRail({ top: first.offsetTop - 8, height: (last.offsetTop - first.offsetTop) + 20 });
+      if (current) setDotTop(current.offsetTop + 7);
+    };
+    place();
+    window.addEventListener('resize', place);
+    window.addEventListener('load', place);
+    return () => {
+      window.removeEventListener('resize', place);
+      window.removeEventListener('load', place);
+    };
+  }, [activeId]);
 
   const internshipBullets = [
     { id: 'ai', title: 'AI Automation & Systems Integration', detail: 'SmartSites: Architecting automated pipelines using n8n and OpenAI to transform raw user data into fully functional websites.' },
@@ -52,16 +87,15 @@ const Home = () => {
 
       <div className="wrap">
         <div className="main">
-          <div className="spine" />
+          <div className="rail" style={{ top: rail.top, height: rail.height }} />
+          <div className="scrolldot" style={{ top: dotTop }} />
 
           {/* HERO */}
           <header className="hero reveal" style={{ animationDelay: '40ms' }}>
             <div className="hero-top">
               <div className="hero-id">
                 <div className="chip">
-                  <span className="pin" />
                   <img src={profilePic} alt="Aidan McClure" />
-                  <span className="tick">ID·00</span>
                 </div>
                 <div>
                   <h1 className="hname">Aidan<br />McClure</h1>
@@ -84,8 +118,8 @@ const Home = () => {
           </header>
 
           {/* BACKGROUND */}
-          <section className="sec reveal" style={{ animationDelay: '120ms' }}>
-            <div className="eyebrow"><span className="node on" /><span className="idx">01</span><span className="lbl">Background</span></div>
+          <section id="background" className="sec reveal" style={{ animationDelay: '120ms' }}>
+            <div className="eyebrow"><span className="idx">01</span><span className="lbl">Background</span></div>
             <p className="lede">
               Recently finished my B.S. in Computer Science at the University of North Florida.
               When I'm not building AI pipelines or troubleshooting servers, I'm usually learning
@@ -104,8 +138,8 @@ const Home = () => {
           </section>
 
           {/* EXPERIENCE */}
-          <section className="sec reveal" style={{ animationDelay: '180ms' }}>
-            <div className="eyebrow"><span className="node" /><span className="idx">02</span><span className="lbl">Experience</span></div>
+          <section id="experience" className="sec reveal" style={{ animationDelay: '180ms' }}>
+            <div className="eyebrow"><span className="idx">02</span><span className="lbl">Experience</span></div>
             <div className="exp">
               <div className="job now">
                 <span className="jnode" />
@@ -148,8 +182,8 @@ const Home = () => {
           </section>
 
           {/* PROJECTS */}
-          <section className="sec reveal" style={{ animationDelay: '240ms' }}>
-            <div className="eyebrow"><span className="node" /><span className="idx">03</span><span className="lbl">Technical Projects</span></div>
+          <section id="projects" className="sec reveal" style={{ animationDelay: '240ms' }}>
+            <div className="eyebrow"><span className="idx">03</span><span className="lbl">Technical Projects</span></div>
             <div className="pgrid">
               {projects.map((p) => (
                 <Link to={p.to} key={p.idx} className={`card${p.lead ? ' lead' : ''}`}>
