@@ -110,7 +110,7 @@ const Home = () => {
                 <a className="ic" href="https://github.com/Mcc-aid" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={19} strokeWidth={1.6} /></a>
                 <a className="ic" href="https://linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={19} strokeWidth={1.6} /></a>
                 <a className="ic" href="mailto:aidangwalter@icloud.com" aria-label="Email"><Mail size={19} strokeWidth={1.6} /></a>
-                <a className="ic" href="#" aria-label="Music"><Music size={19} strokeWidth={1.6} /></a>
+                <a className="ic" href="https://open.spotify.com/user/by0dw8mqfguu2575d5t0eil09?si=FgdsHb5dS1KPYs9bfmKD6A&utm_source=sms" aria-label="Music"><Music size={19} strokeWidth={1.6} /></a>
                 <span className="rdiv" />
                 <a className="resume" href="/Aidan_McClure_Resume.pdf" download><Download size={14} /> Resume</a>
               </div>
