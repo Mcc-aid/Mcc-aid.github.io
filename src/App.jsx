@@ -121,9 +121,9 @@ const Home = () => {
           <section id="background" className="sec reveal" style={{ animationDelay: '120ms' }}>
             <div className="eyebrow"><span className="idx">01</span><span className="lbl">Background</span></div>
             <p className="lede">
-              Recently finished my B.S. in Computer Science at the University of North Florida.
-              When I'm not building AI pipelines or troubleshooting servers, I'm usually learning
-              new kendama tricks, heading to concerts, or just hanging with friends outdoors.
+              I recently graduated from the University of North Florida with a Bachelor of Science in Computer Science and a minor in Business Management.
+              I am motivated to pursue new challenges and further develop my professional skills.
+              In my free time, I enjoy playing kendama, attending concerts, and engaging in social activities with friends.
             </p>
             <div className="skillgrid">
               <div>
@@ -144,7 +144,7 @@ const Home = () => {
               <div className="job now">
                 <span className="jnode" />
                 <div className="jrow">
-                  <span className="jtitle">Software Engineering Intern</span>
+                  <span className="jtitle">Solutions Architect Intern</span>
                   <span className="jdate">JAN 2025 — PRESENT</span>
                 </div>
                 <div className="jco">Custom Design Partners</div>
